@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.2.2/css/tom-select.min.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h2><a href="/" class="logo">Movie Recommendation System</a></h2>
+
+        <ul class="nav-links">
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <form id="recommend-form" action="/recommend" method="post">
+        <div class="form-row">
+            <label for="movies">SELECT MOVIES</label>
+            <select id="movie-select" name="movies" multiple>
+                {% for movie in movies %}
+                <option value="{{ movie }}">{{ movie }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="input-container">
+            <input type="submit" value="GET RECOMMENDATIONS">
+        </div>
+    </form>
+
+    <div class="loading" id="loading">Loading recommendations...</div>
+
+    <section class="results" id="results">
+        {% if recommendations %}
+            <h3>Recommended Movies</h3>
+            <div class="recommendations-container">
+                {% for movie, poster in recommendations %}
+                    <div class="movie-card">
+                        <img src="{{ poster }}" alt="{{ movie }}" class="movie-poster">
+                        <p>{{ movie }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </section>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.2.2/js/tom-select.complete.min.js"></script>
+    <script>
+        new TomSelect("#movie-select", {
+            maxItems: 3,
+            create: false,
+            sortField: { field: "text", direction: "asc" },
+            placeholder: "Type to search movies..."
+        });
+
+        document.getElementById("recommend-form").addEventListener("submit", function() {
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("results").style.display = "none";
+        });
+
+        // Highlight active menu item
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('.nav-links .active').classList.remove('active');
+                this.classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+</html>

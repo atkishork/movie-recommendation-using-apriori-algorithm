@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Movie Recommendation System</title>
+    <link rel="stylesheet" href="static/about.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <h2><a href="/" class="logo">Movie Recommendation System</a></h2>
+        <ul class="nav-links">
+            <li><a href="/" >Home</a></li>
+            <li><a href="/about" class="active">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <main class="about-container">
+        <section class="about-section">
+            <h2>About the Project</h2>
+            <p>The <strong>Movie Recommendation System</strong> is a web-based application designed to help users discover movies based on their preferences. The system analyzes user-selected movies and provides recommendations using the <strong>Apriori Algorithm</strong>, a popular technique in <strong>association rule mining</strong>.</p>
+
+            <p><strong>Key Highlights:</strong></p>
+            <p>🎬 <strong>Personalized Suggestions:</strong> Users can input three movies they recently watched, and the system generates a list of similar movies based on common viewing patterns.</p>
+            <p>🧠 <strong>Data-Driven Approach:</strong> The algorithm learns from past user interactions to find meaningful relationships between different movies.</p>
+            <p>🌟 <strong>Enhanced User Experience:</strong> By integrating the <strong>TMDB API</strong>, the system fetches high-quality movie posters, making the recommendations visually appealing.</p>
+            <p>💡 <strong>User-Friendly Interface:</strong> The platform is designed with an intuitive UI, ensuring a seamless and engaging experience for users across different devices.</p>
+            <p>⚡ <strong>Fast and Efficient:</strong> The system quickly processes movie data and suggests up to <strong>10 relevant movies</strong> based on the input, making movie discovery effortless.</p>
+
+            <p>The <strong>ultimate goal</strong> of this project is to make movie selection easier and more enjoyable by leveraging <strong>machine learning and data analysis</strong> techniques. Whether users are looking for similar genres, directors, or actors, the system efficiently finds connections to suggest movies they'll likely enjoy.</p>
+
+        </section>
+
+        <section class="about-section">
+            <h2>Technologies Used</h2>
+            <ul>
+                <li><strong>Backend:</strong> Flask (Python)</li>
+                <li><strong>Machine Learning:</strong> Apriori Algorithm (mlxtend)</li>
+                <li><strong>Frontend:</strong> HTML, CSS, JavaScript</li>
+                <li><strong>Database:</strong> CSV-based dataset</li>
+                <li><strong>External API:</strong> TMDB API for movie posters</li>
+            </ul>
+        </section>
+
+        <section class="about-section">
+            <h2>How It Works</h2>
+            <ol>
+                <li><strong>Data Collection & Preprocessing:</strong>  
+                    The system utilizes a dataset containing information about movies, including titles, genres, directors, cast, and IMDb ratings.  
+                    The data is cleaned, formatted, and structured into transactions where each user’s movie preferences are grouped together.
+                </li>
+        
+                <li><strong>Data Processing:</strong>  
+                    The preprocessed movie data is converted into a format compatible with the <strong>Apriori Algorithm</strong>.  
+                    Each movie is treated as an item, and sets of frequently watched movies are identified to find strong associations.
+                </li>
+        
+                <li><strong>Applying the Apriori Algorithm:</strong>  
+                    The system uses the <strong>mlxtend</strong> library to apply the Apriori algorithm.  
+                    It scans the dataset to find movies that are often watched together and generates association rules based on support, confidence, and lift.
+                </li>
+        
+                <li><strong>Recommendation Generation:</strong>  
+                    When a user selects three movies, the system finds the strongest associations from the generated rules and suggests up to <strong>10 relevant movies</strong>.  
+                    The recommendations are ranked based on confidence scores to ensure the most meaningful suggestions.
+                </li>
+        
+                <li><strong>Fetching Movie Posters:</strong>  
+                    To enhance the user experience, the system integrates the <strong>TMDB API</strong> to fetch and display high-quality movie posters.  
+                    This makes the recommendations visually appealing and more engaging for users.
+                </li>
+        
+                <li><strong>User Interface:</strong>  
+                    The frontend is designed with a clean and responsive UI, allowing users to interact easily with the recommendation system.  
+                    Features include:
+                    <ul>
+                        <li>🎯 <strong>Dropdown Selection:</strong> Users can quickly select movies from an auto-suggest dropdown.</li>
+                        <li>⚡ <strong>Instant Recommendations:</strong> Results are displayed instantly upon selection.</li>
+                        <li>📱 <strong>Mobile-Friendly:</strong> The system adapts to different screen sizes for seamless use.</li>
+                    </ul>
+                </li>
+        
+                <li><strong>Final Output:</strong>  
+                    The recommended movies, along with their posters, are displayed in a visually appealing <strong>grid format</strong>.  
+                    Users can explore new movie options based on their past interests, making movie discovery simple and enjoyable.
+                </li>
+            </ol>
+        </section>
+        
+
+        <section class="about-section">
+            <h2>Key Features</h2>
+            <ul>
+                <li>✅ <strong>Apriori Algorithm Implementation:</strong> Finds movie associations.</li>
+                <li>✅ <strong>Movie Poster Fetching:</strong> Uses TMDB API.</li>
+                <li>✅ <strong>User-Friendly Interface:</strong> Responsive and easy to use.</li>
+                <li>✅ <strong>Live Search:</strong> Helps users quickly select movies.</li>
+                <li>✅ <strong>Randomization for Variety:</strong> Ensures at least 10 recommendations.</li>
+            </ul>
+        </section>
+
+        <section class="about-section">
+            <h2>Example Outputs</h2>
+            <h3>🎬 User Input:</h3>
+            <ul>
+                <li>"Inception"</li>
+                <li>"The Dark Knight"</li>
+                <li>"Interstellar"</li>
+            </ul>
+            <h3>🔥 Recommended Movies:</h3>
+            <ul>
+                <li>The Prestige ✅</li>
+                <li>Memento ✅</li>
+                <li>Dunkirk ✅</li>
+                <li>Tenet ✅</li>
+                <li>Fight Club ✅</li>
+                <li>The Matrix ✅</li>
+                <li>Se7en ✅</li>
+                <li>The Godfather ✅</li>
+                <li>Pulp Fiction ✅</li>
+                <li>Gladiator ✅</li>
+            </ul>
+        </section>
+
+        <section class="about-section">
+            <h2>Future Improvements</h2>
+            <ul>
+                <li>🚀 <strong>Collaborative Filtering Integration:</strong> Enhance recommendations.</li>
+                <li>🚀 <strong>Genre-Based Filtering:</strong> Allow users to filter by genre.</li>
+                <li>🚀 <strong>User Authentication:</strong> Personalized recommendations.</li>
+                <li>🚀 <strong>Real-Time Movie Trends:</strong> Display trending movies.</li>
+            </ul>
+        </section>
+
+        <section class="about-section">
+            <h2>Conclusion</h2>
+            <p>The <strong>Movie Recommendation System</strong> leverages the power of <strong>data mining</strong> and <strong>machine learning</strong> to provide personalized movie suggestions.  
+            By utilizing the <strong>Apriori Algorithm</strong>, it identifies patterns in user preferences, making the recommendation process more accurate and efficient.</p>
+        
+            <p>With an intuitive and responsive user interface, along with visually appealing movie posters fetched from the <strong>TMDB API</strong>, the system enhances the movie discovery experience.  
+            Whether you're looking for your next favorite film or exploring different genres, this intelligent recommendation tool makes the process seamless and enjoyable.</p>
+        
+            <p>Try it out and unlock a world of amazing movies tailored to your taste! 🎬✨</p>
+        </section>
+        <section class="about-section">
+            <h2>About the Developer</h2>
+            <p><strong>Name:</strong> Kishor Kumar</p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/atkishork" target="_blank">atkishork</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/kishork22" target="_blank">kishork22</a></p>
+        </section>
+        
+    </main>
+</body>
+</html>
