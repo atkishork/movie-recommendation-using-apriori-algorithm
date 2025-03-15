@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import pandas as pd
 import requests
 import random
+import os
 from mlxtend.frequent_patterns import apriori, association_rules
 
 app = Flask(__name__)
@@ -16,7 +17,7 @@ unique_movies = sorted(df['Movie_Name'].unique().tolist())
 
 # Convert data into a format suitable for Apriori
 basket = df.groupby(['Transaction', 'Movie_Name'])['Genre'].count().unstack().fillna(0)
-basket = basket.applymap(lambda x: 1 if x > 0 else 0)
+basket = basket.astype(bool)  # Convert to boolean to avoid deprecation warning
 
 # Debugging: Print unique movie count
 print(f"Total Unique Movies: {len(unique_movies)}")
@@ -26,7 +27,7 @@ min_support_value = 2 / len(basket)  # Minimum support count = 2
 frequent_itemsets = apriori(basket, min_support=min_support_value, use_colnames=True)
 
 # Generate Association Rules
-min_confidence_value = 0.7  # Confidence threshold = 0.7
+min_confidence_value = 0.8  # Confidence threshold = 0.8
 rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=min_confidence_value)
 
 # Debugging: Print total generated rules
@@ -108,4 +109,5 @@ def contact():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))  # Use PORT from Render or default to 5000
+    app.run(host='0.0.0.0', port=port, debug=True)
