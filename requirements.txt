@@ -59,7 +59,6 @@ protobuf==5.29.3
 psutil==5.9.0
 ptyprocess==0.7.0
 pyarrow==19.0.1
-pycairo==1.20.1
 pycryptodomex==3.11.0
 pycups==2.0.1
 pydeck==0.9.1
